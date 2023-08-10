@@ -14,7 +14,10 @@ repositories {
 }
 
 dependencies {
-
+    testImplementation(kotlin("test"))
+    testImplementation("org.mockito:mockito-core:5.4.0")
+    implementation("com.google.code.gson:gson:2.10.1")
+    implementation("io.quickchart:QuickChart:1.2.0")
 }
 
 tasks.test {
