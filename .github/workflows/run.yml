@@ -1,0 +1,29 @@
+name: Run Project on Schedule
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-20.04
+
+    steps:
+
+      - uses: actions/checkout@v3
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Retryable Gradlew Run
+        uses: nick-fields/retry@v2
+        with:
+            command: ./gradlew run --args={{TOKEN}}
+            timeout_minutes: 3
+            max_attempts: 3
