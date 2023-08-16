@@ -24,6 +24,6 @@ jobs:
       - name: Retryable Gradlew Run
         uses: nick-fields/retry@v2
         with:
-            command: ./gradlew run --args={{TOKEN}}
+            command: ./gradlew run --args=${{secrets.TOKEN}}
             timeout_minutes: 3
             max_attempts: 3
