@@ -45,7 +45,7 @@ class MessageUtilsTest {
     }
 
     @Test
-    fun `test generateMessageAndCheckLength with single repository that needs truncation`() {
+    fun `test generateMessageAndCheckLength with some repository that needs truncation`() {
 
         // Define the size of the repository list before and after truncation
         val repositorySize = 40
