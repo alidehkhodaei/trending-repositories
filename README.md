@@ -1,6 +1,19 @@
 <h1 align="center">Trending Repositories</h1>
 <div align="center">
-<img src="https://github.com/alidehkhodaei/trending-repositories/blob/main/images/banner.png" alt="Banner">
+
+[![Badge](https://img.shields.io/badge/language-Kotlin-purple)](https://kotlinlang.com)
+[![Badge](https://wakatime.com/badge/user/c5c7cf00-dda5-4401-be38-f4dbcbb087f1/project/ebd0f8da-5fea-4629-a030-1c1dade8f773.svg)](https://wakatime.com/badge/user/c5c7cf00-dda5-4401-be38-f4dbcbb087f1/project/ebd0f8da-5fea-4629-a030-1c1dade8f773)
+![Badge](https://img.shields.io/badge/built_with-love-red)
+![Badge](https://img.shields.io/badge/GitHub-Trending-brightgreen)
+![Badge](https://img.shields.io/badge/uses-Telegram%20Bot%20API-blue)
+![Badge](https://img.shields.io/badge/coverage-100%25-green)
+![Badge](https://img.shields.io/badge/CI/CD-GitHub%20Actions-orange)
+![Badge](https://img.shields.io/badge/build-gradle-red)
+![Badge](https://img.shields.io/badge/tests-JUnit-blue)
+![Badge](https://img.shields.io/badge/mocks-Mockito-yellow)
+![Badge](https://img.shields.io/badge/license-MIT-brightgreen)
+
+<img src="./images/banner.png" alt="Banner">
 </div>
 
 ## Overview
