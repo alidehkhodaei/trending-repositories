@@ -20,11 +20,6 @@ import kotlin.collections.Map
 
 class ApiClientTest {
 
-    private val actualResponseBody = HTTP_OK
-    private val actualResponseStatusCode = "{\"ok\":true"
-
-    private val token = "1234"
-
     @Mock
     private lateinit var mockClient: HttpClient
 
@@ -59,7 +54,7 @@ class ApiClientTest {
         val expectedRequestBody = mapOf(
             KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
             KEY_TEXT to "Test data",
-            KEY_PARSE_MODE to KEY_MARKDOWN,
+            KEY_PARSE_MODE to MARKDOWN,
             KEY_DISABLE_WEB_PAGE_PREVIEW to "true"
         )
 
@@ -79,7 +74,7 @@ class ApiClientTest {
         val expectedRequestBody = mapOf(
             KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
             KEY_CAPTION to "Test data",
-            KEY_PARSE_MODE to KEY_MARKDOWN,
+            KEY_PARSE_MODE to MARKDOWN,
             KEY_PHOTO to "https://test.com/image.jpg"
         )
 
@@ -140,11 +135,17 @@ class ApiClientTest {
         return JSONObject(actual).toMap()
     }
 
+    companion object {
+        private const val actualResponseBody = HTTP_OK
+        private const val actualResponseStatusCode = "{\"ok\":true"
+        private const val token = "1234"
+    }
+
 }
 
 /*
     A comment for me!
-    For checking request body every reqest, this class created. Visit this link:
+    For checking request body every request, this class created. Visit this link:
     https://stackoverflow.com/questions/59342963/how-to-test-java-net-http-java-11-requests-bodypublisher
  */
 private class FlowSubscriber<T> : Flow.Subscriber<T> {

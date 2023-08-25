@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 
-
 class MessageUtilsTest {
 
     /**
@@ -14,21 +13,6 @@ class MessageUtilsTest {
      *
      * @see List.generateMessageAndCheckLength
      */
-
-    private val repository =
-        Repository(80, "Ali", "repo", "This is description", "Kotlin", 190, "https://github.com/Ali/repo")
-
-    private val title = "🟩 *Today:* ${today()}"
-
-    private val content = """
-                📋 *Name:* [repo](https://github.com/Ali/repo)
-                📝 *Description:* This is description
-                👤 *Author:* Ali
-                🌐 *Language:* Kotlin
-                ⭐ *Stars:* 190
-                🍴 *Forks:* 80     
-                """.trimIndent().trim()
-
 
     @Test
     fun `test generateMessageAndCheckLength with empty list`() {
@@ -70,6 +54,24 @@ class MessageUtilsTest {
         }
 
         assertEquals(expectedResult, actualResult)
+    }
+
+    companion object {
+
+        private val repository =
+            Repository(80, "Ali", "repo", "This is description", "Kotlin", 190, "https://github.com/Ali/repo")
+
+        private val title = "🟩 *Today:* ${today()}"
+
+        private val content = """
+                📋 *Name:* [repo](https://github.com/Ali/repo)
+                📝 *Description:* This is description
+                👤 *Author:* Ali
+                🌐 *Language:* Kotlin
+                ⭐ *Stars:* 190
+                🍴 *Forks:* 80     
+                """.trimIndent().trim()
+
     }
 
 }

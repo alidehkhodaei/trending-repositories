@@ -30,7 +30,7 @@ class ApiClient(private val httpRequest: HttpRequest) {
         val requestBody = mapOf(
             KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
             KEY_TEXT to data,
-            KEY_PARSE_MODE to KEY_MARKDOWN,
+            KEY_PARSE_MODE to MARKDOWN,
             KEY_DISABLE_WEB_PAGE_PREVIEW to "true"
         )
 
@@ -55,7 +55,7 @@ class ApiClient(private val httpRequest: HttpRequest) {
         val requestBody = mapOf(
             KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
             KEY_CAPTION to caption,
-            KEY_PARSE_MODE to KEY_MARKDOWN,
+            KEY_PARSE_MODE to MARKDOWN,
             KEY_PHOTO to photo
         )
 
