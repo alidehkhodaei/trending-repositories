@@ -31,9 +31,11 @@ class ApiClientTest {
 
     private lateinit var apiClient: ApiClient
 
+    private lateinit var autoCloseable: AutoCloseable
+
     @BeforeEach
     fun setup() {
-        MockitoAnnotations.openMocks(this)
+        autoCloseable=MockitoAnnotations.openMocks(this)
 
         val httpRequest = HttpRequest(mockClient)
         apiClient = ApiClient(httpRequest)
@@ -102,6 +104,8 @@ class ApiClientTest {
     fun finish() {
         assertEquals(HTTP_OK, actualResponseBody)
         assertEquals("{\"ok\":true", actualResponseStatusCode)
+
+        autoCloseable.close()
     }
 
     private fun verifyAndCaptureHttpResponse(): HttpRequest {
