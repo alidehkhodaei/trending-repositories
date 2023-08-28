@@ -39,8 +39,8 @@ class ApiClientTest {
         val httpRequest = HttpRequest(mockClient)
         apiClient = ApiClient(httpRequest)
 
-        `when`(mockResponse.statusCode()).thenReturn(actualResponseBody)
-        `when`(mockResponse.body()).thenReturn(actualResponseStatusCode)
+        `when`(mockResponse.statusCode()).thenReturn(200)
+        `when`(mockResponse.body()).thenReturn("{\"ok\":true")
 
         `when`(mockClient.send(any(), eq(HttpResponse.BodyHandlers.ofString())))
             .thenReturn(mockResponse)
@@ -101,8 +101,8 @@ class ApiClientTest {
 
     @AfterEach
     fun finish() {
-        assertEquals(HTTP_OK, actualResponseBody)
-        assertEquals("{\"ok\":true", actualResponseStatusCode)
+        assertEquals(200, mockResponse.statusCode())
+        assertEquals("{\"ok\":true", mockResponse.body())
     }
 
     private fun verifyAndCaptureHttpResponse(): HttpRequest {
@@ -137,8 +137,6 @@ class ApiClientTest {
     }
 
     companion object {
-        private const val actualResponseBody = HTTP_OK
-        private const val actualResponseStatusCode = "{\"ok\":true"
         private const val token = "1234"
     }
 
@@ -146,7 +144,7 @@ class ApiClientTest {
 
 /*
     A comment for me!
-    For checking request body every request, this class created. Visit this link:
+    For checking request body every request, I created this class. Visit this link:
     https://stackoverflow.com/questions/59342963/how-to-test-java-net-http-java-11-requests-bodypublisher
  */
 private class FlowSubscriber<T> : Flow.Subscriber<T> {
