@@ -6,9 +6,11 @@ import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.api.extension.ExtendWith
 import org.mockito.*
 import org.mockito.ArgumentMatchers.eq
 import org.mockito.Mockito.*
+import org.mockito.junit.jupiter.MockitoExtension
 import java.net.http.HttpClient
 import java.net.http.HttpRequest
 import java.net.http.HttpResponse
@@ -18,6 +20,7 @@ import java.util.concurrent.CountDownLatch
 import java.util.concurrent.Flow
 import kotlin.collections.Map
 
+@ExtendWith(MockitoExtension::class)
 class ApiClientTest {
 
     @Mock
@@ -31,12 +34,8 @@ class ApiClientTest {
 
     private lateinit var apiClient: ApiClient
 
-    private lateinit var autoCloseable: AutoCloseable
-
     @BeforeEach
     fun setup() {
-        autoCloseable=MockitoAnnotations.openMocks(this)
-
         val httpRequest = HttpRequest(mockClient)
         apiClient = ApiClient(httpRequest)
 
@@ -104,8 +103,6 @@ class ApiClientTest {
     fun finish() {
         assertEquals(HTTP_OK, actualResponseBody)
         assertEquals("{\"ok\":true", actualResponseStatusCode)
-
-        autoCloseable.close()
     }
 
     private fun verifyAndCaptureHttpResponse(): HttpRequest {
