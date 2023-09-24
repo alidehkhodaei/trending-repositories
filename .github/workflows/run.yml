@@ -1,7 +1,7 @@
 name: Run Project on Schedule
 on:
   schedule:
-    - cron: '30 14 * * *' # It is executed every day at 18:00 Iran time.
+    - cron: '0 20 * * *' # It is executed every day at 23:30 Iran time.
 
 jobs:
   build:
