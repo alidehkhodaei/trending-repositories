@@ -117,14 +117,6 @@ class StringUtilsTest {
     }
 
     @Test
-    fun `test truncateAndEmptyOrNull with special characters in string`() {
-        val input = "This is a long string with special characters*&`"
-        val expected = "This is a long string with special characters"
-        val actual = input.truncateAndEmptyOrNull()
-        assertEquals(expected, actual)
-    }
-
-    @Test
     fun `test truncateAndEmptyOrNull with long string`() {
         val input =
             "A bot that automatically fetches trending repositories and sends them to a channel. This is test string"

@@ -36,12 +36,13 @@ data class Repository(
      */
     override fun toString(): String {
         return """
-                  📋 *Name:* [$name]($url)
-                  📝 *Description:* ${description.truncateAndEmptyOrNull()}
-                  👤 *Author:* $author
-                  🌐 *Language:* ${language ?: DOES_NOT_EXIST_MESSAGE}
-                  ⭐ *Stars:* $stars
-                  🍴 *Forks:* $forks                                         
-              """.trimIndent().trim()
+                  📋 <b>Name:<a href="$url">$name</a></b>
+                  📝 <b>Description:</b> ${description.truncateAndEmptyOrNull()}
+                  👤 <b>Author:</b> $author
+                  🌐 <b>Language:</b> ${language ?: DOES_NOT_EXIST_MESSAGE}
+                  ⭐ <b>Stars:</b> $stars
+                  🍴 <b>Forks:</b> $forks
+              """.trimIndent()
     }
+
 }

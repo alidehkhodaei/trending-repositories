@@ -28,9 +28,9 @@ class ApiClient(private val httpRequest: HttpRequest) {
      */
     fun sendToChannel(data: String, token: String): String {
         val requestBody = mapOf(
-            KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
+            KEY_CHAT_ID to CHANNEL_ID,
             KEY_TEXT to data,
-            KEY_PARSE_MODE to MARKDOWN,
+            KEY_PARSE_MODE to PARSE_MODE_VALUE,
             KEY_DISABLE_WEB_PAGE_PREVIEW to "true"
         )
 
@@ -53,9 +53,9 @@ class ApiClient(private val httpRequest: HttpRequest) {
      */
     fun sendPhotoWithCaption(photo: String, caption: String, token: String): String {
         val requestBody = mapOf(
-            KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
+            KEY_CHAT_ID to CHANNEL_ID,
             KEY_CAPTION to caption,
-            KEY_PARSE_MODE to MARKDOWN,
+            KEY_PARSE_MODE to PARSE_MODE_VALUE,
             KEY_PHOTO to photo
         )
 

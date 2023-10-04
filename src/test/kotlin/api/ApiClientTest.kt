@@ -53,9 +53,9 @@ class ApiClientTest {
     @Test
     fun `test 'sendToChannel'`() {
         val expectedRequestBody = mapOf(
-            KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
+            KEY_CHAT_ID to CHANNEL_ID,
             KEY_TEXT to "Test data",
-            KEY_PARSE_MODE to MARKDOWN,
+            KEY_PARSE_MODE to PARSE_MODE_VALUE,
             KEY_DISABLE_WEB_PAGE_PREVIEW to "true"
         )
 
@@ -73,9 +73,9 @@ class ApiClientTest {
     @Test
     fun `test 'sendPhotoWithCaption'`() {
         val expectedRequestBody = mapOf(
-            KEY_CHAT_ID to CHANNEL_ID_USED_IN_REQUEST_BODY,
+            KEY_CHAT_ID to CHANNEL_ID,
             KEY_CAPTION to "Test data",
-            KEY_PARSE_MODE to MARKDOWN,
+            KEY_PARSE_MODE to PARSE_MODE_VALUE,
             KEY_PHOTO to "https://test.com/image.jpg"
         )
 
