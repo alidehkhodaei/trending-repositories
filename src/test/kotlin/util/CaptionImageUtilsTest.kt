@@ -1,6 +1,6 @@
 package util
 
-import constant.CHANNEL_ID_USED_IN_MESSAGE
+import constant.CHANNEL_ID
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
 import kotlin.test.assertTrue
@@ -32,14 +32,14 @@ class CaptionImageUtilsTest {
         )
 
         val expectedCaption = """
-            |*The most commonly used languages in the trending repositories on ${today()} are:*
+            |<b>The most commonly used languages in the trending repositories on ${today()} are:</b>
             |
             |🟢 Kotlin
             |🔴 Java
             |🟡 Python
             |
-            |$CHANNEL_ID_USED_IN_MESSAGE
-        """.trimMargin().trim()
+            |$CHANNEL_ID
+        """.trimMargin()
 
         val actualCaption = languageMap.generateCaption()
 

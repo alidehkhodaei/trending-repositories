@@ -1,6 +1,6 @@
 package util
 
-import constant.CHANNEL_ID_USED_IN_MESSAGE
+import constant.CHANNEL_ID
 import model.Repository
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.Test
@@ -24,7 +24,7 @@ class MessageUtilsTest {
     fun `test generateMessageAndCheckLength with single repository that fits`() {
         val repositoryList = listOf(repository)
         val actualString = repositoryList.generateMessageAndCheckLength()
-        val expectedString = "$title\n\n$content\n\n$CHANNEL_ID_USED_IN_MESSAGE"
+        val expectedString = "$title\n\n$content\n\n$CHANNEL_ID"
         assertEquals(expectedString, actualString)
     }
 
@@ -32,12 +32,12 @@ class MessageUtilsTest {
     fun `test generateMessageAndCheckLength with some repository that needs truncation`() {
 
         // Define the size of the repository list before and after truncation
-        val repositorySize = 40
-        val expectedSizeAfterCheckLength = 25
+        val repositorySize = 41
+        val expectedSizeAfterCheckLength = 20
 
         // Generate a list of repositories
         val repositoryList = ArrayList<Repository>()
-        repeat(repositorySize + 1) {
+        repeat(repositorySize) {
             repositoryList.add(repository)
         }
 
@@ -47,10 +47,10 @@ class MessageUtilsTest {
         // Build the expected result with title, content, and channel ID
         val expectedResult = buildString {
             append("$title\n\n")
-            repeat(expectedSizeAfterCheckLength + 1) {
+            repeat(expectedSizeAfterCheckLength) {
                 append("$content\n\n")
             }
-            append(CHANNEL_ID_USED_IN_MESSAGE)
+            append(CHANNEL_ID)
         }
 
         assertEquals(expectedResult, actualResult)
@@ -61,16 +61,16 @@ class MessageUtilsTest {
         private val repository =
             Repository(80, "Ali", "repo", "This is description", "Kotlin", 190, "https://github.com/Ali/repo")
 
-        private val title = "🟩 *Today:* ${today()}"
+        private val title = "🟩 <b>Today:</b> ${today()}"
 
-        private val content = """
-                📋 *Name:* [repo](https://github.com/Ali/repo)
-                📝 *Description:* This is description
-                👤 *Author:* Ali
-                🌐 *Language:* Kotlin
-                ⭐ *Stars:* 190
-                🍴 *Forks:* 80     
-                """.trimIndent().trim()
+        private val content="""
+                  📋 <b>Name:<a href="https://github.com/Ali/repo">repo</a></b>
+                  📝 <b>Description:</b> This is description
+                  👤 <b>Author:</b> Ali
+                  🌐 <b>Language:</b> Kotlin
+                  ⭐ <b>Stars:</b> 190
+                  🍴 <b>Forks:</b> 80
+        """.trimIndent()
 
     }
 

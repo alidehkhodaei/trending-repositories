@@ -47,11 +47,11 @@ fun Map<String, Int>.generateImageUrl(): String {
 fun Map<String, Int>.generateCaption(): String {
     val emojis = generateEmojisForCaption(this.size)
     val caption = buildString {
-        appendLine("*The most commonly used languages in the trending repositories on ${today()} are:*\n")
+        appendLine("<b>The most commonly used languages in the trending repositories on ${today()} are:</b>\n")
         keys.forEachIndexed { index, language ->
             appendLine("${emojis[index % emojis.size]} $language")
         }
-        append("\n"+CHANNEL_ID_USED_IN_MESSAGE)
+        append("\n"+ CHANNEL_ID)
     }
     return caption
 }
