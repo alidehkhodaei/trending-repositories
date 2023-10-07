@@ -9,16 +9,16 @@ import model.Repository
 /**
  * Checks the length of the string.
  * If the string is empty or null, returns a predefined message indicating non-existence.
- * Otherwise, truncates the string to a specified limit.
+ * Otherwise, truncates the string to a specified limit and replace `<` symbol with `&lt;` (`<` causes an error in html parse mode, so I replace it with `&lt;`).
  *
  * @receiver The input string to be truncated or checked for emptiness.
  * @return Processed string or "DOES NOT EXIST" message.
  */
-fun String?.truncateAndEmptyOrNull(): String {
+fun String?.truncateAndCheckEmptyOrNull(): String {
     return if (this.isNullOrEmpty()) {
         DOES_NOT_EXIST_MESSAGE
     } else {
-        this.truncate()
+        this.truncate().replace("<", "&lt;")
     }
 }
 

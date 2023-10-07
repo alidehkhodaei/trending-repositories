@@ -1,7 +1,7 @@
 package model
 
 import constant.DOES_NOT_EXIST_MESSAGE
-import util.truncateAndEmptyOrNull
+import util.truncateAndCheckEmptyOrNull
 
 /**
  * Repository.
@@ -37,7 +37,7 @@ data class Repository(
     override fun toString(): String {
         return """
                   📋 <b>Name:<a href="$url">$name</a></b>
-                  📝 <b>Description:</b> ${description.truncateAndEmptyOrNull()}
+                  📝 <b>Description:</b> ${description.truncateAndCheckEmptyOrNull()}
                   👤 <b>Author:</b> $author
                   🌐 <b>Language:</b> ${language ?: DOES_NOT_EXIST_MESSAGE}
                   ⭐ <b>Stars:</b> $stars

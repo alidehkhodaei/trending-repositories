@@ -99,20 +99,20 @@ class StringUtilsTest {
     }
 
     /**
-     * Tests for the 'truncateAndEmptyOrNull'.
+     * Tests for the 'truncateAndCheckEmptyOrNull'.
      *
-     * @see String.truncateAndEmptyOrNull
+     * @see String.truncateAndCheckEmptyOrNull
      */
 
     @Test
     fun `test truncateAndEmptyOrNull with empty string`() {
-        val actual = "".truncateAndEmptyOrNull()
+        val actual = "".truncateAndCheckEmptyOrNull()
         assertEquals(DOES_NOT_EXIST_MESSAGE, actual)
     }
 
     @Test
     fun `test truncateAndEmptyOrNull with null`() {
-        val actual = null.truncateAndEmptyOrNull()
+        val actual = null.truncateAndCheckEmptyOrNull()
         assertEquals(DOES_NOT_EXIST_MESSAGE, actual)
     }
 
@@ -122,7 +122,15 @@ class StringUtilsTest {
             "A bot that automatically fetches trending repositories and sends them to a channel. This is test string"
         val expected =
             "A bot that automatically fetches trending repositories and sends them to a channel. This is test str..."
-        val actual = input.truncateAndEmptyOrNull()
+        val actual = input.truncateAndCheckEmptyOrNull()
+        assertEquals(expected, actual)
+    }
+
+    @Test
+    fun `test should replace symbols with their corresponding HTML entities`() {
+        val input = "< Hello"
+        val expected = "&lt; Hello"
+        val actual = input.truncateAndCheckEmptyOrNull()
         assertEquals(expected, actual)
     }
 
